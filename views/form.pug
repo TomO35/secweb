@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    br
+    br
+    br
+    div.container.hast-text-centered
+        form(action="/" method="post")
+            div.columns.is-multiline
+                div.column.is-offset-2.is-4
+                    input#name.input(type="text" name="user_name" placeholder="Nom" value=(undefined===personne ? '' : personne.name), required='true')
+                div.column.is-4
+                    input#firstname.input(type="text" name="user_firstname" placeholder="Prénom" value=(undefined===personne ? '' : personne.firstname), required='true')
+                label.column.is-offset-4.is-2.is-pulled-right(for="birthdate") Date de naissance :
+                div.column.is-4
+                    input#birthdate.input(type="Date" name="user_birthdate" value=(undefined===personne ? '' : personne.birthdate), required='true')
+                div.column.is-offset-2.is-4
+                    input#mail.input(type="email" name="user_mail" placeholder="E-mail" value=(undefined===personne ? '' : personne.mail), required='true')
+                div.column.is-4
+                    input#tel.input(type="tel" name="user_tel" pattern="[0-9]{10}" placeholder="Téléphone" value=(undefined===personne ? '' : personne.tel), required='true')
+                div.column.is-offset-2.is-8
+                    input#adresse.input(type="text" name="user_adresse" placeholder="Adresse" value=(undefined===personne ? '' : personne.adresse), required='true')
+                div.column.is-offset-2.is-4
+                    input#cp.input(type="text" name="user_cp" pattern="[0-9]{5}" placeholder="CP" value=(undefined===personne ? '' : personne.cp), required='true')
+                div.column.is-4
+                    input#city.input(type="text" name="user_city" placeholder="Ville" value=(undefined===personne ? '' : personne.city), required='true')
+            div.is-full-width.has-text-centered
+                button.button.is-success(type="submit") Envoyer
+        
+        if errors 
+        ul
+            for error in errors
+                li.is-danger!= error.msg
