@@ -1,9 +1,9 @@
 const mariadb = require('mariadb');
 
 const pool = mariadb.createPool({
-     host: 'mydb.com', 
+     host: 'personnes', 
      user:'application', 
-     password: 'myPassword',
+     password: 'crkdji8I90Fd',
      connectionLimit: 5
 });
 
@@ -12,7 +12,7 @@ module.exports = {
       let conn;
       try {
     	conn = await pool.getConnection();
-    	const res = await conn.query("INSERT INTO personnes value (?, ?, ?, ?, ?, ?, ?, ?)", [personne.name, personne.firstname, personne.birthdate, personne.mail, personne.tel, personne.adresse, personne.cp, personne.ville]);
+    	const res = await conn.query("INSERT INTO coordonnees value (?, ?, ?, ?, ?, ?, ?, ?)", [personne.name, personne.firstname, personne.birthdate, personne.mail, personne.tel, personne.adresse, personne.cp, personne.ville]);
     	console.log(res); 
       } catch (err) {
     	throw err;
@@ -26,7 +26,7 @@ module.exports = {
         let res = null;
         try {
             conn = await pool.getConnection();
-            res = await conn.query("SELECT * FROM personnes");
+            res = await conn.query("SELECT * FROM coordonnees");
             console.log(res);
         } catch (err) {
             throw err;
