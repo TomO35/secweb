@@ -9,4 +9,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/', personne_controller.personne_create_post);
 
+router.get('/list', personne_controller.personne_all_get);
+
 module.exports = router;

@@ -22,6 +22,17 @@ module.exports = {
     },
 
     getpersonnes: async function getpersonnes() {
-
+        let conn;
+        let res = null;
+        try {
+            conn = await pool.getConnection();
+            res = await conn.query("SELECT * FROM personnes");
+            console.log(res);
+        } catch (err) {
+            throw err;
+        } finally {
+            if (conn) return conn.end();
+        }
+        return res;
     }
 }

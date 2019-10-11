@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    br
+    br
+    div.has-text-centered
+        div.columns
+            for personne in personnes
+                br
+                div.column.is-one-third
+                    div.card
+                        div.card-content
+                            div.media
+                                div.media-content
+                                    p.title.is-4 #{personne.name + " " + personne.firstname}
+                                    p.subtitle.is-6 #{personne.birthdate}
+                            div.content
+                            p #{personne.mail}
+                            p #{personne.tel}
+                            p #{personne.adresse}
+                            p #{personne.cp + ", " + personne.ville}
+                br
